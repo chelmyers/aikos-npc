@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // .then(data => console.log(data))
     // .catch(error => console.log(error));
 
-    Papa.parse('./a/data/data.csv', {
+    Papa.parse('https://docs.google.com/spreadsheet/pub?key=1PB8o8w9kHG5eJ9SatDOFxfI3W6ELl2wbmX8lnwS6Xk0&output=csv ', {
         download: true,
         header: true,
         complete: results => {
