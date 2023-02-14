@@ -1,42 +1,87 @@
-let data;
+let data, fields;
 
 document.addEventListener("DOMContentLoaded", function(event) {
     // Your code to run since DOM is loaded and ready
 
     console.log('DOM ready');
 
-    fetch('https://spreadsheets.google.com/spreadsheet/pub?key=1PB8o8w9kHG5eJ9SatDOFxfI3W6ELl2wbmX8lnwS6Xk0&output=csv')
-    .then(response => console.log(response))
-    .then(data => console.log(data))
-    .catch(error => console.log(error));
+    // fetch('./a/data/data.csv')
+    // .then(response => console.log(response))
+    // .then(data => console.log(data))
+    // .catch(error => console.log(error));
+
+    Papa.parse('./a/data/data.csv', {
+        download: true,
+        header: true,
+        complete: results => {
+            console.log(results);
+            fields = results.meta.fields;
+            data = filterData(results.data, results.meta.fields);
+            console.log(data);
+        }
+    })
 
 });
 
 
 function generate () {
     
+
+    document.querySelector(".generate").innerHTML = "";
+    
     let n = 10;
-    let prevNums = [];
-    let csv;
+    let options;
     
     for (var i = 0; i < n; i++) {
 
-        let select = randomNumber(100);
-        let prevUsed = prevNums.includes(select);
+        // let prevNums = [];
 
-        do { 
-            select = randomNumber(100);
-            prevUsed = prevNums.includes(select);
-        } while (prevUsed == true);
+        for(j = 0; j < fields.length; j++) {
+            //Select random options
+            let max = data[fields[j]].length - 1;
 
-        prevNums.push(select);
+            //Set data
+            let select = randomNumber(max);
+            // let prevUsed = prevNums.includes(select);
+
+            // do { 
+            //     select = randomNumber(max);
+            //     prevUsed = prevNums.includes(select);
+            // } while (prevUsed == true);
+
+            // prevNums.push(select);
+
+            //grab random data
+            // Insert into page
+            let option = data[fields[j]][select];
+
+            if (fields[j] == 'stats' ) {
+                option = `<a href="https://www.dndbeyond.com/monsters/${option}" target="_blank">${option}</a>`
+            }
+            if(options) {
+                options = `${options} | ${option}`;
+            } else {
+                options = option;
+            }
+            
+            
+            // console.log(option + " " + max + " " + select);
+
+        }
+
         
         let html = document.createElement('p');
-        html.innerHTML = select;
-        document.querySelector(".generate").append(html);
+        console.log(options);
+            html.innerHTML = options;
+            document.querySelector(".generate").append(html);
+
+
+        options = "";
+
+
+
     }
-    
-    
+     
 }
 
 
@@ -44,6 +89,30 @@ function randomNumber(max) {
     return Math.floor(Math.random() * max);
 }
 
-function setRandomNumber (){
+function filterData(csv, headers){
+    let filteredJSON = {};
+    let filteredArray = [];
 
+    for(i = 0; i < headers.length; i++) {
+        filteredArray[i] = [];
+    }
+
+    csv.filter(function(data){
+
+        for(i = 0; i < headers.length; i++) {
+            let label = headers[i];
+            if(data[label]){
+                filteredArray[i].push(data[label]);
+             }
+        }
+        
+   })
+
+   for(i = 0; i < headers.length; i++) {
+        let label = headers[i];
+        filteredJSON[label] = filteredArray[i];
+    }
+
+//    console.log(filteredJSON);
+   return filteredJSON;
 }
