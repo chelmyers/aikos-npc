@@ -5,11 +5,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     console.log('DOM ready');
 
-    // fetch('./a/data/data.csv')
-    // .then(response => console.log(response))
-    // .then(data => console.log(data))
-    // .catch(error => console.log(error));
-
     Papa.parse('https://docs.google.com/spreadsheets/d/1PB8o8w9kHG5eJ9SatDOFxfI3W6ELl2wbmX8lnwS6Xk0/gviz/tq?tqx=out:csv&sheet=data', {
         download: true,
         header: true,
@@ -20,6 +15,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
             console.log(data);
         }
     })
+
+
+    // Papa.parse('./a/data/data.csv', {
+    //     download: true,
+    //     header: true,
+    //     complete: results => {
+    //         console.log(results);
+    //         fields = results.meta.fields;
+    //         data = filterData(results.data, results.meta.fields);
+    //         console.log(data);
+    //     }
+    // })
 
 });
 
@@ -37,6 +44,7 @@ function generate () {
     for (var i = 0; i < n; i++) {
 
         // let prevNums = [];
+        let npc = {};
 
         for(j = 0; j < fields.length; j++) {
             //Select random options
@@ -55,31 +63,30 @@ function generate () {
 
             //grab random data
             // Insert into page
+
+            
+
+            npc[fields[j]] = data[fields[j]][select]
+
             let option = data[fields[j]][select];
-
-            if (fields[j] == 'stats' ) {
-                option = `<a href="https://www.dndbeyond.com/monsters/${option}" target="_blank">${option}</a>`
-            }
-            if(options) {
-                options = `${options} | ${option}`;
-            } else {
-                options = option;
-            }
-            
-            
-            // console.log(option + " " + max + " " + select);
-
         }
 
         
-        let html = document.createElement('p');
+
+        statsName = npc.stats.split(/-(.*)/s)
+        npc.statsName = statsName[1];
+
+        console.log(npc);
+
+        let npcFormatted = `<ul class="npc"><li class="title">${npc.firstname} ${npc.lastname}</li>`
+        npcFormatted += `<li>${npc.race} &middot; ${npc.age} &middot; <a href="https://www.dndbeyond.com/monsters/${npc.stats}" target="_blank">${npc.statsName}</a></li>`
+        npcFormatted += `<li>${npc.build} &middot; ${npc.detail}</li>`
+        npcFormatted += `<li>${npc.personality}</li><ul>`
+
+        let html = document.createElement('div');
         console.log(options);
-            html.innerHTML = options;
-            document.querySelector(".generate").append(html);
-
-
-        options = "";
-
+        html.innerHTML = npcFormatted;
+        document.querySelector(".generate").append(html);
 
 
     }
