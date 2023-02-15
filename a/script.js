@@ -30,8 +30,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 });
 
-// https://docs.google.com/spreadsheets/d/1PB8o8w9kHG5eJ9SatDOFxfI3W6ELl2wbmX8lnwS6Xk0/gviz/tq?tqx=out:csv&sheet=data
-
 
 function generate () {
     
@@ -78,12 +76,13 @@ function generate () {
 
         console.log(npc);
 
-        let npcFormatted = `<ul class="npc"><li class="title">${npc.firstname} ${npc.lastname}</li>`
+        let npcFormatted = `<ul><li class="title">${npc.firstname} ${npc.lastname}</li>`
         npcFormatted += `<li>${npc.race} &middot; ${npc.age} &middot; <a href="https://www.dndbeyond.com/monsters/${npc.stats}" target="_blank">${npc.statsName}</a></li>`
         npcFormatted += `<li>${npc.build} &middot; ${npc.detail}</li>`
         npcFormatted += `<li>${npc.personality}</li><ul>`
 
         let html = document.createElement('div');
+        html.className = 'npc';
         console.log(options);
         html.innerHTML = npcFormatted;
         document.querySelector(".generate").append(html);
