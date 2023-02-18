@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+ <!--HEY YOU, 
+        could you not judge my shitty code, yah snoop? Jeeeez. 
+        - xoxoxo chelsea
+    -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +15,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="a/style.css">
+
+
+   
 </head>
 <body>
 
@@ -19,11 +26,52 @@
         <h1>NPC Generator D&amp;D 5E</h1>
         <p class="italic">Random NPCs - generates name, race, build, detail, personality, and a statblock from dndbeyond.</p>
 
-        <button onclick="generate()">Generate</button>
+        <div>
+            <label for='number'><b>How many NPCs?</b></label>
+            <select id='number' name='number'>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5' selected>5</option>
+                <option value='6'>6</option>
+                <option value='8'>8</option>
+                <option value='9'>9</option>
+                <option value='10'>10</option>
+                <option value='11'>11</option>
+                <option value='12'>12</option>
+                <option value='13'>13</option>
+                <option value='14'>14</option>
+                <option value='15'>15</option>
+                <option value='16'>16</option>
+                <option value='18'>18</option>
+                <option value='19'>19</option>
+                <option value='20'>20</option>
+
+            </select>
+        </div>
+
+        <button onclick="generateNPCs()" class="m-top">Generate &#8634;</button>
+        
 
 
-        <div class="generate">
-            <pre class="wizard">                   
+        <div class="tabs-container m-top-large">
+
+            <ul class="tabs-list">
+                <li class="tabs-item">
+                  <button class="tabs-btn active" data-id="generate">New</button>
+                </li>
+                <li class="tabs-item">
+                  <button class="tabs-btn" data-id="saves">Saved &darr;</button>
+                </li>
+              </ul>
+
+            <div class="generate">
+                
+
+                <div class="generate-content">
+
+                    <pre class="wizard">                   
                    ____ 
                 .'* *.'
              __/_*_*(_
@@ -46,17 +94,34 @@
    _.-'    /     Bb     '-. '-._ 
 _.-'       |      BBb       '-.  '-. 
 (________mrf\____.dBBBb.________)____)
-            </pre>
+                    </pre>
+                    
+                </div>
+
+            </div>
             
+
+            <div class="saves">
+                
+
+                <div class="saves-content">
+                   
+                </div>
+
+                <button onclick="clearSaves()" class="m-top-large">Clear Saves</button>
+                <p class="small italic">Be advised! Your saves will also clear when you clear your browsers history and cookies.</p>
+            </div>
+           
+
+
         </div>
+  
     </div>
 
 
-    <footer>
+    <footer class="small">
         <p class="bold">Credit for source materials</p>
         <p class="italic">
-
-
             <a href="https://www.asciiart.eu/people/occupations/wizards" target="_blank">Morfina</a> for ascii art &middot;
             <a href="https://chartopia.d12dev.com/chart/2369/" target="_blank">Ludifex</a> for names, details, and personalities &middot;
             <a href="https://www.fantasynamegenerators.com/" target="_blank">Fantasy Name Generators</a> for names &middot;

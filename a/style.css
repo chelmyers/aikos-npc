@@ -1,12 +1,115 @@
+/* HEY YOU, 
+could you not judge my shitty code, yah snoop? Jeeeez. 
+- xoxoxo chelsea */
+
+
+/* structure */
 body {
     font-family: 'Libre Baskerville', serif;
     font-size: 16px;
 }
 
+.main, footer {
+    max-width: 900px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+
+.generate, .saves {
+    background: #ededed;
+    padding: 20px 30px;
+}
+
+.wizard {
+    width: 300px;
+    margin: 0 auto;
+}
+
+
+/* general styles */
+
+/* unvisited link */
+a:link {
+color: #bd0000;
+}
+
+/* visited link */
+a:visited {
+color: #800202;
+}
+
+/* mouse over link */
+a:hover {
+color: #800202;
+}
+
+/* selected link */
+a:active {
+color: #800202;
+}
+
+
 .title {
     font-weight: 700;
 }
 
+
+button {
+    background: #bd0000;
+    border: 0;
+    padding: 10px;
+    width: 200px;
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+    font-family: 'Libre Baskerville', serif;
+}
+    button:hover {
+        background: #800202;
+        cursor: pointer;
+    }
+
+.button-small {
+    background: #bd0000;
+    border: 0;
+    padding: 5px;
+    font-size: 0.5rem;
+    color: white;
+    font-weight: bold;
+    font-family: 'Libre Baskerville', serif;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+
+.italic {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.small {
+    font-size: 0.75rem;
+}
+
+.m-top {
+    margin-top: 1rem;
+}
+
+.m-top-large {
+    margin-top: 2rem;
+}
+
+
+
+
+
+
+
+/* npc styles */
 
 .npc {
     border-bottom: 1px solid black;
@@ -21,45 +124,79 @@ body {
         list-style: none;
     }
 
-.main, footer {
-    max-width: 900px;
-    padding: 15px;
-    margin: 0 auto;
-}
 
-footer{
-    font-size: 0.75rem;
-}
-
-
-button {
+.save-npc {
+    padding: 5px 10px;
     background: #bd0000;
-    border: 0;
-    padding: 10px;
-    width: 200px;
-    font-size: 1rem;
+    display: inline-block;
     color: white;
-    font-weight: bold;
-    font-family: 'Libre Baskerville', serif;
+    margin-bottom: 5px;
 }
 
+    .save-npc:hover {
+        cursor: pointer;
+        background: #800202;
+    }
 
-.italic {
-    font-style: italic;
+    .save-npc:after {
+        content:"\2193"; 
+        margin-left: 10px;
+    }
+
+    .save-npc.saved:after, .saves .save-npc:after {
+        content:"\2713"; 
+
+    }
+
+.saves .save-npc {
+    background: transparent;
+    color: black;
+    padding-left: 0;
 }
 
-.bold {
-    font-weight: 700;
+.saves .save-npc:hover {
+    cursor: auto;
 }
+    
 
 
-.generate {
-    background: #ededed;
-    margin: 20px 0;
-    padding: 20px 30px;
+
+
+/* tabs */
+
+.saves {
+    display: none;
+    min-height: 300px;
 }
 
-.wizard {
-    width: 300px;
-    margin: 0 auto;
+.show-saves .saves {
+    display: block;
 }
+
+.show-saves .generate {
+    display: none;
+}
+
+.tabs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .tabs-list li {
+        display: inline-block;
+        padding:0;
+        margin:0;
+    }
+
+    .tabs-item button {
+        background: #d1d1d1;
+        color: black;
+        margin:0;
+    }
+
+        .tabs-item button.active {
+            background: #ededed;
+        }
+
+
