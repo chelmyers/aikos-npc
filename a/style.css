@@ -184,6 +184,29 @@ button {
 }
 
     .tabs-list li {
+        display: block;
+        padding:0;
+        margin:0;
+    }
+
+    .tabs-item button {
+        
+        background: #ededed;
+        color: black;
+        margin:0;
+        width: 100%;
+        border-bottom: 1px solid white;
+    }
+
+        .tabs-item button.active {
+            background: #d1d1d1;
+        }
+
+
+
+@media (min-width: 400px) {
+
+    .tabs-list li {
         display: inline-block;
         padding:0;
         margin:0;
@@ -191,12 +214,13 @@ button {
 
     .tabs-item button {
         background: #d1d1d1;
-        color: black;
-        margin:0;
+        width: auto;
+        border-bottom: none;
     }
 
         .tabs-item button.active {
             background: #ededed;
         }
 
+}
 
