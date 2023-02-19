@@ -4,6 +4,8 @@ Generate D&D 5E NPCs based on data populated in a google spreadsheet.
 I was over and under-whelmed with the information provided in the NPC generators I could find. All I wanted was a name, a stat block, and some details for the PCs. 
 Enjoy this simple NPC generator 💕🧙‍♀️!
 
+## [Visit Aikos' NPC Generator ✨](https://chelmyers.github.io/aikos-npc/)
+
 ### Credit for source materials
 - [Morfina](https://www.asciiart.eu/people/occupations/wizards) for ascii art
 - [Ludifex](https://chartopia.d12dev.com/chart/2369/) for names, details, and personalities
